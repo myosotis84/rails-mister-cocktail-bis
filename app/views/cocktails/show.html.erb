@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="mt-2"><%= @cocktail.name %></h1>
+  <h2>Ingredients</h2>
+  <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %>
+  <ul>
+    <% unless @cocktail.ingredients.empty? %>
+      <% @cocktail.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %>: <%= ingredient.dose.description %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

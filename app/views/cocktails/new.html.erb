@@ -1,0 +1,14 @@
+<div class="container d-flex flex-column align-items-center">
+  <div class="text-center">
+    <h1 class="mt-2">Add a cocktail</h1>
+    <p>Step 1/2</p>
+  </div>
+  <div class="d-flex flex-column">
+    <div class="form">
+      <%= simple_form_for @cocktail do |f| %>
+        <%= f.input :name %>
+        <%= f.submit "Next" %>
+      <% end %>
+    </div>
+  </div>
+</div>
