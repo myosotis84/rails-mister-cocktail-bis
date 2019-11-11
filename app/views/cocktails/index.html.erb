@@ -1,17 +1,20 @@
 <div class="container">
   <div class="text-center">
     <h1 class="mt-2">Our delicious cocktails</h1>
-    <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-primary my-3" %>
+    <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-primary mt-3 mb-5" %>
   </div>
-  <div class="container d-flex justify-content-center">
-    <div class="row">
-      <% @cocktails.each do |cocktail| %>
-        <%= link_to cocktail_path(cocktail) do %>
-          <div class="col-12 col-sm-4 col-md-3 col-lg-2 border cocktail-card text-center">
-            <h2 class="py-3 m-0"><%= cocktail.name %></h2>
-          </div>
+  <% unless @cocktails.empty? %>
+    <div class="container d-flex justify-content-center">
+      <div class="row">
+        <% @cocktails.each do |cocktail| %>
+          <%= link_to cocktail_path(cocktail), class: "cocktail-card-wrapper" do %>
+            <div class="col-12 col-sm-4 col-md-3 col-lg-2 cocktail-card justify-content-center d-flex align-items-center">
+              <h2 class="py-3 m-0 text-center"><%= cocktail.name %></h2>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
+

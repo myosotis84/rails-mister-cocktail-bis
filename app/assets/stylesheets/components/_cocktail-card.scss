@@ -1,8 +1,27 @@
 .cocktail-card {
-  margin: 8px;
-  height: 100px;
-  min-width: 200px;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  background-color: transparent;
   h2 {
-    font-size: 18px;
+    font-size: 32px;
+    font-weight: bold;
+  }
+}
+
+.cocktail-card-wrapper {
+  color: $lemon;
+  margin: 8px;
+  border: 1px solid gray;
+  background-color: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  height: 180px;
+  width: 180px;
+  border-radius: 3px;
+  &:hover {
+    color: #263238;
+    background-color: $lemon;
+    box-shadow: 0 0 16px rgba(0,0,0,0.4);
+    transform: scale(1.1);
   }
 }

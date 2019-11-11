@@ -1,18 +1,36 @@
+
+<div class="banner mb-3" style="
+<% if @cocktail.image_url == "cocktail-256.png" %>
+    background-color: #ffc400;
+  <% else %>
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path @cocktail.image_url %>)
+  <% end %>
+;">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+  </div>
+</div>
+
 <div class="container">
-  <h1 class="mt-2"><%= @cocktail.name %></h1>
-  <h2>Ingredients</h2>
-  <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %>
-  <ul class="mt-3">
-    <% unless @cocktail.doses.empty? %>
-      <% @cocktail.doses.each do |dose| %>
-      <li>
-        <%= dose.ingredient.name %>: <%= dose.description %>
-        <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
-          <i class="fas fa-trash-alt ml-2"></i>
-        <% end %>
-      </li>
+  <div class="ingredients">
+    <h2>Ingredients</h2>
+      <% if @cocktail.doses.empty? %>
+        <p>No ingredients given.</p>
+      <% else %>
+        <ul class="mt-3">
+          <% @cocktail.doses.each do |dose| %>
+            <li>
+              <%= dose.ingredient.name %>: <%= dose.description %>
+              <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-trash-alt ml-2"></i>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
-    <% end %>
-  </ul>
-  <%= link_to "Back to cocktails list", root_path %>
+    <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-primary mb-5" %>
+  </div>
+  <div>
+    <%= link_to "Back to cocktails list", root_path %>
+  </div>
 </div>

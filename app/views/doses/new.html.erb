@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column align-items-center">
-  <h1 class="text-center mt-2">Add a cocktail</h1>
+  <h1 class="text-center mt-2">Add an ingredient to <%= @cocktail.name %></h1>
   <div class="d-flex flex-column">
     <div class="form">
       <%= simple_form_for [@cocktail, @dose], method: :post, url: cocktail_doses_path do |f| %>
