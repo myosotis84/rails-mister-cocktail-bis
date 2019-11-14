@@ -1,12 +1,18 @@
 <div class="container d-flex flex-column align-items-center">
   <h1 class="text-center mt-2">Add an ingredient to <%= @cocktail.name %></h1>
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column mb-4">
     <div class="form">
       <%= simple_form_for [@cocktail, @dose], method: :post, url: cocktail_doses_path do |f| %>
-        <%= f.association :ingredient, collection: Ingredient.order(name: :asc) %>
+        <%= f.association :ingredient, collection: Ingredient.order(name: :asc),include_hidden: false, input_html: { class: "select2" } %>
         <%= f.input :description, label: "Enter quantity" %>
         <%= f.submit "Create", class: "btn btn-primary" %>
       <% end %>
     </div>
+  </div>
+  <div>
+    <%= link_to "Back to #{@cocktail.name} cocktail", cocktail_path(@cocktail) %>
+  </div>
+  <div>
+    <%= link_to "Back to cocktails list", root_path %>
   </div>
 </div>
