@@ -1,9 +1,9 @@
 
 <div class="banner mb-3" style="
-<% if @cocktail.image_url == "cocktail-256.png" %>
+<% if @cocktail.photo == "cocktail-256.png" %>
     background-color: #ffc400;
-  <% else %>
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path @cocktail.image_url %>);
+<% else %>
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @cocktail.photo, width: 800, crop: :fill %>);
   <% end %>
 ">
   <div class="container">
@@ -12,6 +12,12 @@
 </div>
 
 <div class="container">
+  <% if @cocktail.photo.present? %>
+    <div>
+      <h2>Test photo Cloudinary</h2>
+      <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+    </div>
+  <% end %>
   <div class="ingredients">
     <h2>Ingredients</h2>
     <% if @cocktail.doses.empty? %>
@@ -28,10 +34,10 @@
         <% end %>
       </ul>
     <% end %>
-    <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-primary mb-5" %>
-    <%= link_to "Export recipe", cocktail_path(@cocktail, format: :pdf), class: "btn btn-success mb-5" %>
+    <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-primary mb-3" %>
+    <%= link_to "Export recipe", cocktail_path(@cocktail, format: :pdf), class: "btn btn-success mb-3" %>
   </div>
-  <div>
+  <div class="mb-5">
     <%= link_to "Back to cocktails list", root_path %>
   </div>
 </div>

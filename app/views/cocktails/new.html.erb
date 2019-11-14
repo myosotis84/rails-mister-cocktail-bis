@@ -4,7 +4,8 @@
     <div class="form">
       <%= simple_form_for @cocktail do |f| %>
         <%= f.input :name %>
-        <%= f.input :image_url, label: "Enter url for cocktail image" %>
+        <%= f.input :photo, label: "Select a photo:" %>
+        <%= f.input :photo_cache, as: :hidden %>
         <%= f.submit "Create" %>
       <% end %>
     </div>
