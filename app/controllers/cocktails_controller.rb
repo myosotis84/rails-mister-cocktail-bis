@@ -5,6 +5,12 @@ class CocktailsController < ApplicationController
 
   def show
     @cocktail = Cocktail.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@cocktail.name}-ingredients", template: "cocktails/show.pdf.erb", layout: 'pdf.html.erb'
+      end
+    end
   end
 
   def new
